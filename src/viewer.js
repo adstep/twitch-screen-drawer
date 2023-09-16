@@ -1,3 +1,4 @@
+let bootstrapped = false;
 let canvas = null;
 let ctx = null;
 
@@ -7,6 +8,18 @@ let end  = {x:0, y:0};
 let paint = false;
 
 window.addEventListener('load', () => {
+    window.addEventListener('resize', bootstrap)
+
+    if (window.innerWidth != 0 || window.innerHeight != 0)
+        bootstrap();
+});
+
+function bootstrap() {
+    if (bootstrapped)
+        return;
+
+    bootstrapped = true;
+
     canvas = document.querySelector('#canvas');
     ctx = canvas.getContext('2d');
 
@@ -15,7 +28,7 @@ window.addEventListener('load', () => {
     document.addEventListener('mouseup', stopPainting);
     document.addEventListener('mousemove', mouseMove);
     document.addEventListener('keydown', keydown);
-});
+}
 
 function absDistance(start, end) {
     return Math.abs(start.x - end.x) + Math.abs(start.y - end.y);

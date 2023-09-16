@@ -4,7 +4,7 @@
   "description": "",
   "main": "config.js",
   "scripts": {
-    "start": "http-server --tls"
+    "start": "http-server ./src --tls"
   },
   "author": "",
   "license": "ISC",
